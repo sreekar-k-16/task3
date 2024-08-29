@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class chatbot {
+    private Scanner scanner;
+
+    public chatbot() {
+        scanner = new Scanner(System.in);
+    }
+
+    public void startChat() {
+        System.out.println("Hello! I am a simple chatbot. How can I help you today?");
+        while (true) {
+            String userInput = getUserInput();
+            if (userInput.equalsIgnoreCase("exit")) {
+                System.out.println("Goodbye!");
+                break;
+            }
+            String response = generateResponse(userInput);
+            System.out.println(response);
+        }
+    }
+
+    private String getUserInput() {
+        System.out.print("You: ");
+        return scanner.nextLine();
+    }
+
+    private String generateResponse(String input) {
+        input = input.toLowerCase();
+        switch (input) {
+            case "hello":
+            case "hi":
+                return "Hello! How can I assist you?";
+            case "how are you?":
+                return "I'm just a bunch of code, but I'm here to help you!";
+            case "what is your name?":
+                return "I am a chatbot created in Java.";
+            case "Tell me a joke":
+                return "Sure! Why don’t scientists trust atoms? Because they make up everything!";
+            case " What’s your favorite color?":
+                return " As a virtual assistant, I don’t have personal preferences, but I've heard blue is a popular choice!";
+            default:
+                return "I'm sorry, I don't understand that. Can you ask something else?";
+        }
+    }
+
+    public static void main(String[] args) {
+        chatbot chatbot = new chatbot();
+        chatbot.startChat();
+    }
+}
